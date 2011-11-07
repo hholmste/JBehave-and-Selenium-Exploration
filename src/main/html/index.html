@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script type='text/javascript'>
+		function turnRed() {
+			setText(document.getElementById('output'), document.createTextNode('You clicked red'));
+		}
+
+		function turnBlue() {
+			setText(document.getElementById('output'), document.createTextNode('You clicked blue'));
+		}
+
+		function turnGreen() {
+			setText(document.getElementById('output'), document.createTextNode('You clicked green'));
+		}
+		
+		function calculate() {
+			var left = parseInt(document.getElementById('left').value, 10);
+			var right = parseInt(document.getElementById('right').value, 10);
+			var output = document.getElementById('output');
+			var sum = left + right;
+			var textNode = document.createTextNode(left + ' plus ' + right + ' is ' + sum);
+			
+			setText(output, textNode);
+		}
+
+		function setText(element, txt) {
+			if (element.hasChildNodes()) {
+				element.removeChild(element.firstChild);
+			}
+			
+			element.appendChild(txt);			
+		}
+	</script>
+	<style>
+		
+	</style>
+</head>
+	<h1>Welcome to the welcome page!</h1>
+
+	<div id='output'>here be dragons</div>
+
+	<div id='buttons'>
+		<input type='button' id='red' value='Click this for redness' onclick="javascript:turnRed();"/>
+		<input type='button' id='blue' value='Click this for the blues' onclick="javascript:turnBlue();"/>
+		<input type='button' id='green' value='Click this for green living' onclick="javascript:turnGreen();"/>
+	</div>
+	
+	<div id='numberInput'>
+		<input type='number' id='left' />
+		<input type='number' id='right' />
+		<input type='button' id='calculate' value='Calculate' onclick='javascript:calculate();'/>
+	</div>
+
+</html>
