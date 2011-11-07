@@ -29,6 +29,9 @@ import org.jbehave.web.selenium.WebDriverSteps;
 
 import com.google.common.util.concurrent.MoreExecutors;
 
+/**
+ * 	A concrete class that runs multiple stories.
+ */
 public class MultiBDD extends JUnitStories {
 
 	private WebDriverProvider driverProvider = new PropertyWebDriverProvider();

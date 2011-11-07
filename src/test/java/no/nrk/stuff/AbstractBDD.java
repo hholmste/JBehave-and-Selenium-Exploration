@@ -1,6 +1,7 @@
 package no.nrk.stuff;
 
 import no.nrk.stuff.fixtures.LookAndFeelStep;
+import no.nrk.stuff.fixtures.NumberSteps;
 import no.nrk.stuff.fixtures.Pages;
 
 import org.jbehave.core.configuration.Configuration;
@@ -24,6 +25,16 @@ import org.jbehave.web.selenium.WebDriverSteps;
 
 import com.google.common.util.concurrent.MoreExecutors;
 
+/**
+ * An abstract superclass for running standalone JBehave tests using Selenium
+ * Webdriver.
+ * 
+ * This maps user stories to concrete implementations that have similar names;
+ * the classes should follow normal java conventions, while the stories should
+ * use train-casing (e.g. the class ColorClicking maps to color_clicking.story).
+ * 
+ * If a test fails, a screenshot is provided of the moment when the rest failed.
+ */
 public abstract class AbstractBDD extends JUnitStory {
 
 	private WebDriverProvider driverProvider = new PropertyWebDriverProvider();
@@ -50,6 +61,7 @@ public abstract class AbstractBDD extends JUnitStory {
 		addSteps(new InstanceStepsFactory(
 				configuration,
 				new LookAndFeelStep(pages),
+				new NumberSteps(pages),
 				lifecycleSteps,
 				new WebDriverScreenshotOnFailure(driverProvider, configuration.storyReporterBuilder()))
 				.createCandidateSteps());
