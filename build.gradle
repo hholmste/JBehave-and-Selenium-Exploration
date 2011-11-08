@@ -1,7 +1,7 @@
 //add all the java-stuff
 apply plugin: 'java'
 
-//so we don't have to write gradle test :)
+//so we don't have to write 'gradle test' on the command line :)
 defaultTasks 'test'
 
 //declare the repository we're using
